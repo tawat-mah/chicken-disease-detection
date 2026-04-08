@@ -1,9 +1,8 @@
 streamlit
-keras
-tf-keras
+tensorflow-cpu==2.17.0
 opencv-python-headless
 Pillow
-numpy
+numpy==1.26.4
 scikit-learn
 gdown
 h5py
