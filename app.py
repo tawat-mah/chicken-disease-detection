@@ -232,7 +232,7 @@ def load_model_and_encoder():
     try:
         # ถ้ามีไฟล์ในเครื่องใช้เลย
         if os.path.exists('model/chicken_disease_model_efficientnetb0_final.h5'):
-            from tensorflow.keras.models import load_model
+            from keras.models import load_model
             m = load_model('model/chicken_disease_model_efficientnetb0_final.h5')
             with open('model/label_encoder.pkl', 'rb') as f:
                 le = pickle.load(f)
@@ -248,7 +248,7 @@ def load_model_and_encoder():
             gdown.download(f"https://drive.google.com/uc?id={ENCODER_ID}",
                           "model/label_encoder.pkl", quiet=False)
 
-        from tensorflow.keras.models import load_model
+        from keras.models import load_model
         m = load_model('model/chicken_disease_model_efficientnetb0_final.h5')
         with open('model/label_encoder.pkl', 'rb') as f:
             le = pickle.load(f)
@@ -258,7 +258,7 @@ def load_model_and_encoder():
         return None, None, False
 
 def predict(image, model, le):
-    from tensorflow.keras.applications.efficientnet import preprocess_input
+    from keras.applications.efficientnet import preprocess_input
     img = np.array(image.convert('RGB'))
     img = cv2.resize(img, (224, 224)).astype('float32')
     img = preprocess_input(img)
@@ -278,7 +278,7 @@ st.markdown("""
         <div class="logo-dot"></div>
         ChickenAI &nbsp;<span style="color:#ccc; font-weight:300;">Disease Detection</span>
     </div>
-    <div class="top-right"> Main Data Set From Heng Sun</div>
+    <div class="top-right">EfficientNetB0 &nbsp;·&nbsp; Accuracy 90.3% &nbsp;·&nbsp; Designed by Tawat</div>
 </div>
 """, unsafe_allow_html=True)
 
